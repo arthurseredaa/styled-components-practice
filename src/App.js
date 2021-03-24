@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import styled from "styled-components";
+import { Button } from "./components/Button";
+import { Console } from "./components/Console";
+import { Flex } from "./components/Flex";
+import { Title } from "./components/Title";
+
+const AppWrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  background-color: #222;
+  padding: 2rem;
+`;
 
 function App() {
+  const [text, setText] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <Flex justify="center">
+        <Title color="limegreen">Console.web()</Title>
+      </Flex>
+      <Flex direction="column" margin="10px 0">
+        <Console text={text} setText={setText} />
+        <Button text={text} largeButton outlined color="limegreen" align="flex-end">Alert</Button>
+      </Flex>
+    </AppWrapper>
   );
 }
 
